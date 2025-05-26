@@ -85,7 +85,12 @@ simple-bible-mk2/
 │   ├── urls.py         # Rotas locais
 │   └── templates/      # Templates HTML
 ├── static/             # Arquivos CSS e imagens
-├── simple_bible/       # Configurações do projeto Django
+├── templates/          # Templates base do Django
+│   └──  base.html
+├── usuarios/
+|   ├── models.py       # Modelos de Usuarios
+│   ├── views.py        # Lógica das páginas
+│   └── urls.py         # Rotas locais
 └── manage.py
 ```
 
