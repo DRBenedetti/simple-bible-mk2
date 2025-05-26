@@ -55,6 +55,28 @@ def login(request):
     return render(request, 'login.html', {'status': status})
 
 
+def validar_login(request):
+    email = request.POST.get('email')
+    senha = request.POST.get('senha')
+
+    senha = sha256(senha.encode()).hexdigest()
+
+    usuario = Usuario.objects.filter(email=email).filter(senha=senha)
+
+    if len(email.strip()) == 0 or len(senha.strip()) == 0:
+        return redirect('/auth/login/?status=0')
+    
+    if len(usuario) == 0:
+        return redirect('/auth/login/?status=1')
+
+    try:
+        request.session['usuario'] = usuario[0].id
+        return redirect(to='home')
+    
+    except:
+        return redirect('/auth/login/?status=2')
+
+
 def esqueceu_senha(request):
     status = request.GET.get('status')
     return render(request, 'esqueceu_senha.html', {'status': status})
@@ -77,3 +99,9 @@ def validar_esqueceu_senha(request):
         
         except:
             return redirect('/auth/esqueceu_senha/?status=3') # Erro no sistema
+        
+
+def sair(request):
+    request.session.flush()
+    return redirect(to='login')
+

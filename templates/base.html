@@ -16,20 +16,23 @@
 
     <header class="site-header">
         <div class="logo">
-            <span>Simple Bible</span>
+            <span>Simple bible</span>
         </div>
 
         <div class="nav-center">
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Início</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#">Opções</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li class="login-mobile"><a href="{% url 'login' %}" class="login-button">Login</a></li>
             </ul>
         </div>
 
         <div class="login-area">
-            <a href="{% url 'login' %}" class="login-button">Login</a>
+            {% if request.session.usuario %}
+                <a href="{% url 'logout' %}" class="sair">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="login-button">Login</a>
+            {% endif %}
         </div>
 
         <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -39,13 +42,14 @@
 
 
 
+
     
     <div class="container-children">
-        <!-- Essa parte é um block -->
+
         {% block conteudo %}
             
         {% endblock %}
-        <!-- Essa parte é um block -->
+
     </div>
     
 

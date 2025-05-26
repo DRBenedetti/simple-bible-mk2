@@ -14,9 +14,9 @@
     <p class="slogan">Bem-vindo de volta. Continue sua jornada com fé e conhecimento.</p>
 
     {% if status == '0' %}
-        <div class="alert alert-success">
-            <span class="alert-icon">✅</span>
-            <div><strong>Tudo certo</strong>! Verifique o seu <strong>Email</strong>.</div>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>Por Favor, preencha <strong>todos</strong> os campos.</div>
             <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
         </div>
     {% endif %}
@@ -24,20 +24,12 @@
     {% if status == '1' %}
         <div class="alert alert-danger">
             <span class="alert-icon">❌</span>
-            <div>O campo do Email está <strong>vazio</strong>.</div>
-            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
-        </div>
-    {% endif %}
-
-    {% if status == '2' %}
-        <div class="alert alert-danger">
-            <span class="alert-icon">❌</span>
             <div>Usuario <strong>não</strong> cadastrado.</div>
             <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
         </div>
     {% endif %}
 
-    {% if status == '3' %}
+    {% if status == '2' %}
         <div class="alert alert-danger">
             <span class="alert-icon">❌</span>
             <div>Ouve um <strong>erro</strong> no sistema! Favor tente mais tarde!</div>
@@ -46,7 +38,7 @@
     {% endif %}
     
     <div class="form_container">
-            <form action="" method="post">
+            <form action="{% url 'validar_login' %}" method="post"> {% csrf_token %}
 
                 <div class="form_item">
                     <label for="email">Email</label><br>
