@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}" type="image/x-icon">
+    <title>{% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <span>Simple Bible</span>
+        </div>
+
+        <div class="nav-center">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="{% url 'home' %}">Início</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li class="login-mobile"><a href="{% url 'login' %}" class="login-button">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="login-area">
+            <a href="{% url 'login' %}" class="login-button">Login</a>
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </header>
+
+
+
+
+
+    
+    <div class="container-children">
+        <!-- Essa parte é um block -->
+        {% block conteudo %}
+            
+        {% endblock %}
+        <!-- Essa parte é um block -->
+    </div>
+    
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

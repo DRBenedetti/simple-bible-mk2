@@ -1,0 +1,91 @@
+@import url(base.css);
+
+.form_container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form_item {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.1rem;
+    font-weight: 500;
+    text-align: start;
+    text-indent: 16px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffffbd;
+    color: #000000;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    background-color: #ffffff;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ffffff2a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #ffffff4a;
+}
+
+.form_links {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.form_links a {
+    color: #aad7ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.form_links a:hover {
+    color: #fff;
+}

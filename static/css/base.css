@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+    background-color: #E9A680;
+    background-image: url('../imgs/fundo-grande-full.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    padding: 20px;
+}
+
+.container-children {
+    margin: 30px auto;
+    background-color: #00000013;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #00000099;
+    max-width: 900px;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(6px);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.slogan {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #eee;
+}
+
+.options ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0;
+}
+
+.options li {
+    background-color: #ffffff1a;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.options li:hover {
+    background-color: #ffffff40;
+    transform: translateY(-3px);
+}
+
+.options a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .slogan {
+        font-size: 1rem;
+    }
+    
+    .options ul {
+        grid-template-columns: 1fr;
+    }
+}

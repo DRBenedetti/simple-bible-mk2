@@ -1,0 +1,42 @@
+.container-versiculos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.versiculo {
+  background-color: #ffffffc2;
+  color: #000;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: start;
+  text-indent: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.versiculo:hover {
+  transform: scale(1.02);
+  background-color: #ffffff;
+  
+}
+
+.versiculo > h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: #2d2d2d;
+}
+
+
+@media (min-width: 768px) {
+    .container_versiculos {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: dense;
+    }
+}

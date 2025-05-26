@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Simple Bible - {{tema.nome}}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/versiculos.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+    <h1>{{tema.nome}}</h1>
+    <p class="slogan">Para quando você estiver buscando conforto nas Escrituras.</p>
+
+    <div class="container-versiculos">
+        {% for versiculo in versiculos %}
+            <div class="versiculo">
+                <h3>{{versiculo.referencia}}</h3>
+                <p>{{versiculo.texto}}</p>
+            </div>
+
+        {% endfor %}
+        
+    </div>
+
+{% endblock %}

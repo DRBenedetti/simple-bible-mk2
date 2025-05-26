@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Simple Bible - Cadastro{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alerts.css' %}">
+    
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Cadastre-se</h1>
+    <p class="slogan">Junte-se a nós e descubra a simplicidade da Palavra todos os dias.</p>
+
+    {% if status == '0' %}
+        <div class="alert alert-success">
+            <span class="alert-icon">✅</span>
+            <div><strong>Usuario <strong>cadastrado</strong> com <strong>sucesso</strong>!</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '1' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>Preencha <strong>todos</strong> os campos obrigatórios.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '2' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>Este <strong>e-mail</strong> ou <strong>telefone</strong> já está cadastrado.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '3' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>As <strong>senhas</strong> não coincidem.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '4' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>A <strong>senha</strong> deve conter no mínimo <strong>8 caracteres</strong>.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '5' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div><strong>Erro interno</strong> no sistema. Tente novamente mais tarde.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+    
+    <div class="form_container">
+            <form action="{% url 'validar_cadastro' %}" method="post">{% csrf_token %}
+
+                <div class="form_item">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" name="nome" id="nome" placeholder="Seu nome">
+                </div>
+
+                <div class="form_item">
+                    <label for="sobrenome">Sobrenome:</label><br>
+                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Seu sobrenome">
+                </div>
+
+                <div class="form_item">
+                    <label for="email">Email</label><br>
+                    <input type="email" name="email" id="email" placeholder="Digite o seu email"><br>
+                </div>
+
+                <div class="form_item">
+                    <label for="nascimento">Data de Nascimento:</label><br>
+                    <input type="date" name="nascimento" id="nascimento">
+                </div>
+
+                <div class="form_item">
+                    <label for="telefone">Telefone (com DDD):</label><br>
+                    <input type="tel" name="telefone" id="telefone" placeholder="(**) ***** ****">
+                </div>
+
+                <div class="form_item">
+                    <label for="senha">Senha</label><br>
+                    <input type="password" name="senha" id="senha" placeholder="Digite a sua senha">
+                </div>
+
+                <div class="form_item">
+                    <label for="confirma_senha">Confirmar Senha:</label><br>
+                    <input type="password" name="confirma_senha" id="confirma_senha" placeholder="Confirme a sua senha">
+                </div>
+
+                <input type="submit" value="Cadastre-se">
+                <br><br>
+                <div class="form_links">
+                    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui!</a></p>
+                </div>
+
+            </form>
+        
+    </div>
+{% endblock %}

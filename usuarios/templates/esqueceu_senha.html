@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Simple Bible - Esqueceu a senha{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alerts.css' %}">
+    
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Esqueceu a senha!</h1>
+    <p class="slogan">Digite o seu Email que você usou para fazer Login!</p>
+    <!--    MENSAGEM    -->
+    {% if status == '0' %}
+        <div class="alert alert-success">
+            <span class="alert-icon">✅</span>
+            <div><strong>Tudo certo</strong>! Verifique o seu <strong>Email</strong>.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '1' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>O campo do Email está <strong>vazio</strong>.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '2' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>Usuario <strong>não</strong> cadastrado.</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+
+    {% if status == '3' %}
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <div>Ouve um <strong>erro</strong> no sistema! Favor tente mais tarde!</div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    {% endif %}
+    <!--    MENSAGEM    -->
+    
+    <div class="form_container">
+            <form action="{% url 'validar_esqueceu_senha' %}" method="post"> {% csrf_token %}
+
+                <div class="form_item">
+                    <label for="email">Email</label><br>
+                    <input type="email" name="email" id="email" placeholder="Digite o seu email"><br>
+                </div>
+
+                <input type="submit" value="Mandar Email!">
+                <br><br>
+                <div class="form_links">
+                    <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se aqui!</a></p>
+
+                </div>
+
+            </form>
+        
+    </div>
+{% endblock %}
