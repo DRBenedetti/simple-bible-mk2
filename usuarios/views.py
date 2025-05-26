@@ -51,6 +51,8 @@ def validar_cadastro(request):
 
 
 def login(request):
+    if request.session.get('usuario'):
+        return redirect(to='home')
     status = request.GET.get('status')
     return render(request, 'login.html', {'status': status})
 
