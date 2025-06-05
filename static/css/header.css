@@ -126,4 +126,12 @@
     .login-mobile {
         display: none;
     }
+
+    #button_mobile_login{
+        display: none;
+    }
+    
+    #button_mobile_logout{
+        display: none;
+    }
 }

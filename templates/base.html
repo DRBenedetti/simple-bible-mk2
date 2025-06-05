@@ -22,8 +22,13 @@
         <div class="nav-center">
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Início</a></li>
-                <li><a href="#">Opções</a></li>
+                <li><a href="#">Configurações</a></li>
                 <li><a href="#">Sobre</a></li>
+                {% if request.session.usuario %}
+                    <a href="{% url 'logout' %}" id="button_mobile_logout" class="sair">Sair</a>
+                {% else %}
+                    <a href="{% url 'login' %}" id="button_mobile_login" class="login-button">Login</a>
+                {% endif %}
             </ul>
         </div>
 
@@ -37,11 +42,6 @@
 
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </header>
-
-
-
-
-
 
     
     <div class="container-children">
